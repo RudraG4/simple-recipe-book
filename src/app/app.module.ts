@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FormsModule } from '@angular/forms';
 import { RecipesModule } from './recipes/recipes.module';
-import { ShoppingModule } from './shopping-list/shopping.module';
+import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AppDirectives } from './shared/directives/app-directives.module';
 
 @NgModule({
@@ -16,7 +16,7 @@ import { AppDirectives } from './shared/directives/app-directives.module';
     AppRoutingModule,
     FormsModule,
     RecipesModule,
-    ShoppingModule,
+    ShoppingListModule,
     AppDirectives,
   ],
   providers: [],
