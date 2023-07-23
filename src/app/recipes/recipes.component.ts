@@ -10,6 +10,12 @@ import { RecipeService } from './recipe.service';
 export class RecipesComponent {
   public selectedRecipe!: Recipe;
 
+  constructor(private recipeService: RecipeService) {
+    this.recipeService.recipeSelected.subscribe(
+      (recipe) => (this.selectedRecipe = recipe)
+    );
+  }
+
   onRecipeSelect(recipe: Recipe) {
     this.selectedRecipe = recipe;
   }
