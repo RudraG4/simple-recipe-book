@@ -18,7 +18,8 @@ export class ShoppingEditComponent {
   @ViewChild('itemName', { static: true }) itemNameRef!: ElementRef;
   @ViewChild('itemAmount', { static: true }) itemAmountRef!: ElementRef;
 
-  onIngredientAdd() {
+  onIngredientAdd(event: Event) {
+    event.preventDefault();
     const name = this.itemNameRef.nativeElement.value;
     const amount = this.itemAmountRef.nativeElement.value;
     if (!name || !amount) {
