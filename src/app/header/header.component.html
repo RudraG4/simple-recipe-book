@@ -1,0 +1,25 @@
+<nav class="navbar navbar-expand-lg bg-body-secondary border-bottom">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="#">Recipe Book</a>
+        <button class="navbar-toggler" type="button" [ariaExpanded]="isNavOpen" aria-label="Toggle navigation"
+            (click)="onNavBtnClick()">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div *ngIf="isNavOpen" class="navbar-collapse" [class.collapse]="!isNavOpen">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li><a class="nav-link" href="#" (click)="onSelect('recipes')">Recipes</a></li>
+                <li><a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+            </ul>
+            <div class="nav-item dropdown" dropDown>
+                <button class="nav-link dropdown-toggle" type="button" [ariaExpanded]="isNavOpen">
+                    Manage
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item" href="#">Save Data</a></li>
+                    <li><a class="dropdown-item" href="#">Fetch Data</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

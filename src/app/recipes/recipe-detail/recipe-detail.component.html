@@ -1,0 +1,42 @@
+<ng-container *ngIf="recipe; else unselectedFallback">
+    <div class="row">
+        <div class="col-xs-12">
+          <img [src]="recipe.imagePath" [alt]="recipe.name" class="img-fluid" style="max-width:500px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+          <h1>{{ recipe.name }}</h1>
+        </div>
+        <div class="col-auto">
+            <div class="dropdown" dropDown>
+              <button type="button" class="btn btn-primary dropdown-toggle">
+                Manage Recipe
+              </button>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="dropdown-item">To Shopping List</a></li>
+                <li><a href="#" class="dropdown-item">Edit Recipe</a></li>
+                <li><a href="#" class="dropdown-item">Delete Recipe</a></li>
+              </ul>
+            </div>
+          </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+          {{ recipe.description }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+          Ingredients
+        </div>
+    </div>
+</ng-container>
+
+<ng-template #unselectedFallback>
+   <div class="row h-100">
+        <div class="col-xs-12 p-3 d-flex flex-column align-items-center justify-content-center">
+            <em>Select a recipe to view it</em>
+        </div>
+   </div>
+</ng-template>
