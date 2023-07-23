@@ -14,14 +14,29 @@ export class ShoppingListService {
   }
 
   addIngredient(ingredient: Ingredient) {
-    const index = this.ingredients.findIndex(
-      (ing) => ing.name.toLowerCase() == ingredient.name.toLowerCase()
-    );
-    if (index > -1) {
-      this.ingredients[index].amount += ingredient.amount;
-    } else {
-      this.ingredients.push(ingredient);
+    if (ingredient) {
+      this._addIngrediants([ingredient]);
     }
-    this.ingredientsChanged.emit(this.ingredients);
+  }
+
+  addIngredients(ingredients: Ingredient[]) {
+    this._addIngrediants(ingredients);
+  }
+
+  private _addIngrediants(ingredients: Ingredient[]) {
+    if (ingredients?.length) {
+      const ingredientMap = Object.fromEntries(
+        this.ingredients.map((ingredient) => [ingredient.name, ingredient])
+      );
+      ingredients.forEach((ingredient) => {
+        if (ingredientMap[ingredient.name]) {
+          ingredientMap[ingredient.name].amount += ingredient.amount;
+        } else {
+          ingredientMap[ingredient.name] = { ...ingredient };
+        }
+      });
+      this.ingredients = [...Object.values(ingredientMap)];
+      this.ingredientsChanged.emit(this.ingredients.slice());
+    }
   }
 }
