@@ -1,6 +1,6 @@
 {
   "name": "simple-recipe-book",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --disable-host-check",
