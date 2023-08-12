@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-body-secondary border-bottom">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold" href="#">Recipe Book</a>
+        <a class="navbar-brand fw-bold" routerLink="">Recipe Book</a>
         <button class="navbar-toggler" type="button" [ariaExpanded]="isNavOpen" aria-label="Toggle navigation"
             (click)="onNavBtnClick()">
             <span class="navbar-toggler-icon"></span>
@@ -8,8 +8,8 @@
 
         <div *ngIf="isNavOpen" class="navbar-collapse" [class.collapse]="!isNavOpen">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li><a class="nav-link" href="#" (click)="onSelect('recipes')">Recipes</a></li>
-                <li><a class="nav-link" href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
+                <li><a class="nav-link" routerLink="">Recipes</a></li>
+                <li><a class="nav-link" routerLink="shopping-list">Shopping List</a></li>
             </ul>
             <div class="nav-item dropdown" dropDown>
                 <button class="nav-link dropdown-toggle" type="button" [ariaExpanded]="isNavOpen">
