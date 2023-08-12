@@ -6,6 +6,7 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { RecipeService } from './recipe.service';
 import { AppDirectives } from '../shared/directives/app-directives.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,13 @@ import { AppDirectives } from '../shared/directives/app-directives.module';
     RecipeItemComponent,
     RecipeDetailComponent,
   ],
-  imports: [CommonModule, AppDirectives],
+  imports: [
+    CommonModule,
+    AppDirectives,
+    RouterModule.forChild([
+      { path: '', pathMatch: 'full', component: RecipesComponent },
+    ]),
+  ],
   exports: [RecipesComponent],
   providers: [RecipeService],
 })

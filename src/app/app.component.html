@@ -1,11 +1,9 @@
-<app-header (menuSelected)="currentMenu=$event"></app-header>
-<div class="container">
+<app-header></app-header>
+<div class="container position-relative">
+  <ngx-ui-loader></ngx-ui-loader>
   <div class="row">
     <div class="col-12 p-3">
-      <ng-container [ngSwitch]="currentMenu">
-        <app-recipes *ngSwitchCase="'recipes'"></app-recipes>
-        <app-shopping-list *ngSwitchDefault></app-shopping-list>
-      </ng-container>      
+      <router-outlet></router-outlet>      
     </div>
   </div>
 </div>

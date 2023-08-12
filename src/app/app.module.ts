@@ -8,6 +8,20 @@ import { FormsModule } from '@angular/forms';
 import { RecipesModule } from './recipes/recipes.module';
 import { ShoppingListModule } from './shopping-list/shopping-list.module';
 import { AppDirectives } from './shared/directives/app-directives.module';
+import {
+  NgxUiLoaderModule,
+  NgxUiLoaderHttpModule,
+  NgxUiLoaderConfig,
+  SPINNER,
+} from 'ngx-ui-loader';
+
+const ngxUiLoaderConfig: NgxUiLoaderConfig = {
+  bgsSize: 40,
+  fgsType: SPINNER.threeBounce,
+  pbThickness: 5,
+  fgsColor: '#C7D1EF',
+  pbColor: '#C7D1EF',
+};
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -18,6 +32,8 @@ import { AppDirectives } from './shared/directives/app-directives.module';
     RecipesModule,
     ShoppingListModule,
     AppDirectives,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true }),
   ],
   providers: [],
   bootstrap: [AppComponent],
