@@ -14,6 +14,7 @@ import {
   NgxUiLoaderConfig,
   SPINNER,
 } from 'ngx-ui-loader';
+import { GoogleTagManagerService } from './shared/services/google-tag-manager.service';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsSize: 40,
@@ -38,4 +39,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private gtmService: GoogleTagManagerService){
+    this.gtmService.loadGTM('GTM-MTCHF4MM');
+  }
+}
