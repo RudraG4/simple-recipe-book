@@ -6,7 +6,9 @@ import { RecipeDetailComponent } from './recipe-detail/recipe-detail.component';
 import { RecipeItemComponent } from './recipe-list/recipe-item/recipe-item.component';
 import { RecipeService } from './recipe.service';
 import { AppDirectives } from '../shared/directives/app-directives.module';
-import { RouterModule } from '@angular/router';
+import { RecipeRoutingModule } from './recipes-routing.module';
+import { RecipeDetailPlaceholderComponent } from './recipe-detail-placeholder/recipe-detail-placeholder.component';
+import { RecipeEditComponent } from './recipe-edit/recipe-edit.component';
 
 @NgModule({
   declarations: [
@@ -14,14 +16,10 @@ import { RouterModule } from '@angular/router';
     RecipeListComponent,
     RecipeItemComponent,
     RecipeDetailComponent,
+    RecipeDetailPlaceholderComponent,
+    RecipeEditComponent,
   ],
-  imports: [
-    CommonModule,
-    AppDirectives,
-    RouterModule.forChild([
-      { path: '', pathMatch: 'full', component: RecipesComponent },
-    ]),
-  ],
+  imports: [CommonModule, AppDirectives, RecipeRoutingModule],
   exports: [RecipesComponent],
   providers: [RecipeService],
 })
