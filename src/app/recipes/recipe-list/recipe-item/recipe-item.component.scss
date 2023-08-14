@@ -1,0 +1,6 @@
+.list-group-item {
+  &.active {
+    --bs-list-group-active-bg: #f17a7e;
+    --bs-list-group-active-border-color: #f17a7e;
+  }
+}
