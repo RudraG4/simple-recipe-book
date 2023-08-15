@@ -8,7 +8,4 @@ import { Component, HostBinding } from '@angular/core';
 export class AppComponent {
   @HostBinding('class.app-root')
   appRoot = true;
-
-  title = 'simple-recipe-app';
-  currentMenu = 'recipes';
 }

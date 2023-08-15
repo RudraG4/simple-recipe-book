@@ -1,15 +1,14 @@
-import { EventEmitter } from '@angular/core';
 import { Ingredient } from '../shared/models/ingredient.model';
 
 export class ShoppingListService {
-  private ingredients: Ingredient[] = [
-    { name: 'Flour', amount: 10 },
-    { name: 'Cheese', amount: 1 },
-    { name: 'Tomato', amount: 4 },
-  ];
-  ingredientsChanged = new EventEmitter<Ingredient[]>();
+  private ingredients: Ingredient[] = [];
+
+  constructor() {
+    this.ingredients = this.loadLocalData();
+  }
 
   getIngredients() {
+    this.ingredients = this.loadLocalData();
     return this.ingredients.slice();
   }
 
@@ -36,7 +35,22 @@ export class ShoppingListService {
         }
       });
       this.ingredients = [...Object.values(ingredientMap)];
-      this.ingredientsChanged.emit(this.ingredients.slice());
+      this.setLocalData(this.ingredients);
     }
+  }
+
+  private loadLocalData() {
+    let localDataString = localStorage.getItem('recipe-shopping-list');
+    if (!localDataString) {
+      localStorage.setItem('recipe-shopping-list', JSON.stringify([]));
+    }
+    const localIngredientsData: Ingredient[] = JSON.parse(
+      localStorage.getItem('recipe-shopping-list') || '[]'
+    );
+    return localIngredientsData;
+  }
+
+  private setLocalData(data: Ingredient[]) {
+    localStorage.setItem('recipe-shopping-list', JSON.stringify(data));
   }
 }
