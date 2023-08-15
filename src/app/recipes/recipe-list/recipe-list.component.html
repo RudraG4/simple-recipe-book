@@ -9,7 +9,7 @@
          <app-recipe-item 
             class="recipe-item" 
             [id]="recipe.name"
-            *ngFor="let recipe of recipes" 
+            *ngFor="let recipe of (recipes$ | async)" 
             [recipe]="recipe" 
          />
       </div>

@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -9,7 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./recipe-detail.component.scss'],
 })
 export class RecipeDetailComponent {
-  recipe?: Recipe;
+  recipe$!: Observable<Recipe>;
 
   constructor(
     private recipeService: RecipeService,
@@ -19,17 +20,15 @@ export class RecipeDetailComponent {
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((params) => {
-      this.recipe = this.recipeService.getRecipeById(+params['id']);
+      this.recipe$ = this.recipeService.getRecipeById(+params['id']);
     });
   }
 
-  addToShoppingList() {
-    if (this.recipe) {
-      this.recipeService.addIngredientsToShoppingList(this.recipe.ingredients);
-    }
+  addToShoppingList(recipe: Recipe) {
+    this.recipeService.addIngredientsToShoppingList(recipe.ingredients);
   }
 
-  editRecipe() {
+  editRecipe(recipe: Recipe) {
     this.router.navigate(['edit'], { relativeTo: this.activatedRoute });
   }
 }
