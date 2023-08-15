@@ -16,8 +16,13 @@ const routes: Routes = [
         pathMatch: 'full',
         component: RecipeDetailPlaceholderComponent,
       },
-      { path: ':id', component: RecipeDetailComponent },
-      { path: ':id/edit', component: RecipeEditComponent },
+      { path: 'new', component: RecipeEditComponent, title: 'New Recipe' },
+      { path: ':id', component: RecipeDetailComponent, title: 'Recipe Detail' },
+      {
+        path: ':id/edit',
+        component: RecipeEditComponent,
+        title: 'Recipe Edit',
+      },
     ],
   },
 ];
