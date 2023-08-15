@@ -1,0 +1,14 @@
+.navbar-nav {
+  & .nav-link.active,
+  & .nav-link:hover {
+    --bs-nav-link-hover-color: #f17a7e;
+    --bs-navbar-active-color: #f17a7e;
+  }
+}
+
+.dropdown-item {
+  &.active,
+  &:active {
+    --bs-dropdown-link-active-bg: #f17a7e;
+  }
+}
